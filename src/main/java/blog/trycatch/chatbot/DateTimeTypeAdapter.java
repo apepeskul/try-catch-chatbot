@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 
 
 public class DateTimeTypeAdapter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
-    private static final String ISO_8601_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss";
+    private static final String ISO_8601_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS'Z'";
 
     private DateTimeFormatter formatter;
 
