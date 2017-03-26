@@ -40,8 +40,8 @@ public class AuthenticationService {
 
 
     @PostConstruct
-    public AuthenticationResponse autheticate() throws IOException {
-        logger.info("Starting authetication procedure");
+    public AuthenticationResponse authenticate() throws IOException {
+        logger.info("Starting authentication procedure");
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add(CONTENT_TYPE, APPLICATION_X_WWW_FORM_URLENCODED);
@@ -49,7 +49,7 @@ public class AuthenticationService {
         ResponseEntity<String> response = restTemplate.postForEntity(MS_AUTH_URL, entity, String.class);
         Gson gson = new Gson();
         authenticationResponse = gson.fromJson(response.getBody(), AuthenticationResponse.class);
-        logger.info("Autheticated with token: " + authenticationResponse.getAccessToken());
+        logger.info("Authenticated with token: " + authenticationResponse.getAccessToken());
         return authenticationResponse;
     }
 }
