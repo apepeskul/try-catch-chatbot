@@ -1,4 +1,4 @@
-Chatbot using the Microsoft Bot Api
+Spring Boot chatbot using the Microsoft Bot Api
 ====================
 ### Blog post: https://trycatch.blog/2017/03/26/conversational-interfaces-101-writing-a-chatbot-in-java-with-microsoft-bot-api/
 ### Microsoft Bot Api: https://dev.botframework.com/
