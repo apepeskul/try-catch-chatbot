@@ -24,7 +24,10 @@ public class DateTimeTypeAdapter implements JsonSerializer<DateTime>, JsonDeseri
 
     @Override
     public synchronized DateTime deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
-        return formatter.parseDateTime(jsonElement.getAsString());
-
+        try {
+            return formatter.parseDateTime(jsonElement.getAsString());
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 }
