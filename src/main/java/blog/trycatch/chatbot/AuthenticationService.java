@@ -21,7 +21,7 @@ public class AuthenticationService {
     private static final String CLIENT_ID = "client_id";
     private static final String CLIENT_SECRET = "client_secret";
     private static final String SCOPE = "scope";
-    private static final String SCOPE_URL = "https://graph.microsoft.com/.default";
+    private static final String SCOPE_URL = "https://api.botframework.com/.default";
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 

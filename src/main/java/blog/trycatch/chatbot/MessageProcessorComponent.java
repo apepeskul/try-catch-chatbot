@@ -65,9 +65,10 @@ public class MessageProcessorComponent {
         ApiClient apiClient = new ApiClient();
         apiClient.getHttpClient().networkInterceptors().add(chain -> {
             Request request = chain.request();
-            request = request.newBuilder().addHeader(AUTHORIZATION, authenticationService.getAuthenticationResponse().getTokenType() + " " + authenticationService.getAuthenticationResponse().getAccessToken()).build();
+            request = request.newBuilder().build();
             return chain.proceed(request);
         });
+        apiClient.addDefaultHeader(AUTHORIZATION, authenticationService.getAuthenticationResponse().getTokenType() + " " + authenticationService.getAuthenticationResponse().getAccessToken());
         apiClient.setBasePath(urlBasePath);
         return apiClient;
     }
