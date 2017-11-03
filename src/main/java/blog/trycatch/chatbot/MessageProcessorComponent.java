@@ -1,7 +1,6 @@
 package blog.trycatch.chatbot;
 
 import com.google.gson.GsonBuilder;
-import com.squareup.okhttp.Request;
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.api.ConversationsApi;
@@ -37,7 +36,7 @@ public class MessageProcessorComponent {
     public void processMessage() throws ApiException, NoSuchFieldException, IllegalAccessException {
         if (!this.messages.isEmpty()) {
             Activity message = this.messages.poll();
-            logger.info("Processing message: "+message.getText());
+            logger.info("Processing message: " + message.getText());
             this.sendMessageToConversation(message.getChannelId(), message.getRecipient(), message.getFrom(), message.getServiceUrl(), message.getText(), message.getConversation().getId());
         }
     }
@@ -63,11 +62,6 @@ public class MessageProcessorComponent {
 
     private ApiClient instantiateApiClient(String urlBasePath) throws NoSuchFieldException, IllegalAccessException {
         ApiClient apiClient = new ApiClient();
-        apiClient.getHttpClient().networkInterceptors().add(chain -> {
-            Request request = chain.request();
-            request = request.newBuilder().build();
-            return chain.proceed(request);
-        });
         apiClient.addDefaultHeader(AUTHORIZATION, authenticationService.getAuthenticationResponse().getTokenType() + " " + authenticationService.getAuthenticationResponse().getAccessToken());
         apiClient.setBasePath(urlBasePath);
         return apiClient;
